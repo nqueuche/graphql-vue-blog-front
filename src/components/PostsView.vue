@@ -1,8 +1,7 @@
 <template>
   <div>
     <all-posts
-      :allPosts="allPosts"
-    ></all-posts>
+      :allPosts="allPosts"></all-posts>
   </div>
 </template>
 

@@ -11,6 +11,8 @@
             <a :href="'/tag/' + post.primary_tag.slug" class="tag">{{ post.primary_tag.name}}</a>
             <h1 class="title">{{ post.title }}</h1>
             <a :href="'/author/' + post.primary_author.slug" class="author">{{ post.primary_author.name}}</a>
+                        <p id="published-date">Publié le : {{post.published_at | dateformat}}</p>
+
           </b-col>
         </b-row>
       </b-container>
@@ -40,15 +42,22 @@
   height: 400px;
   position: relative;
 }
+#published-date {
+  color: #D3D3D3;
+  font-size: 10pt;
+}
 @media (max-width: 576px) {
   .header-container {
-    height: 500px;
+    height: 700px;
   }
   .purple {
     max-height: 400px;
   }
   .header-title {
     transform: none;
+  }
+  #published-date {
+    color: #3D3D3D;
   }
 }
 
@@ -70,11 +79,15 @@
     margin-bottom: 2em;
 
 }
+
+
 </style>
 
 <script>
 import { POST_QUERY } from "../constants/graphql";
 import SuggestedPosts from "./SuggestedPosts";
+import moment from "moment";
+
 
 export default {
   name: "SinglePost",
@@ -97,6 +110,12 @@ export default {
         };
       }
     }
+  },
+  filters: {
+    dateformat: function(value) {
+      moment.locale("fr");
+      return moment(value).format("LL");
+    },
   }
 };
 </script>

@@ -8,7 +8,7 @@
           <ul>
             <li class="list-unstyled">
               <a
-                :href="post.slug"
+                :href="'/'+post.slug"
                 class="footer-links"
                 v-for="post in allPosts.slice(0, 5)"
                 :key="post.id"

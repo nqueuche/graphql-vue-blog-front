@@ -6,15 +6,15 @@
       <b-button href="/all" variant="outline-primary" class="discover-more">Découvrir plus</b-button>
     </div>
     <div class="last-tag1">
-      <h3 class="homepage-titles">Catégorie : Antibiotiques</h3>
-      <all-posts :allPosts="allPosts.filter(post => post.primary_tag.name === 'Antibiotiques').slice(0, 3)"></all-posts>
-      <b-button href="/tag/antibiotiques" variant="outline-primary" class="discover-more">Découvrir plus</b-button>
+      <h3 class="homepage-titles">Catégorie : Encyclopedie</h3>
+      <all-posts :allPosts="allPosts.filter(post => post.primary_tag.name === 'Encyclopedie').slice(0, 3)"></all-posts>
+      <b-button href="/tag/encyclopedie" variant="outline-primary" class="discover-more">Découvrir plus</b-button>
     </div>
     <div class="last-tag2">
-      <h3 class="homepage-titles">Catégorie : Roaccutane</h3>
+      <h3 class="homepage-titles">Catégorie : Portraits</h3>
 
-      <all-posts :allPosts="allPosts.filter(post => post.primary_tag.name === 'Roaccutane').slice(0, 3)"></all-posts>
-      <b-button href="/tag/roaccutane" variant="outline-primary" class="discover-more">Découvrir plus</b-button>
+      <all-posts :allPosts="allPosts.filter(post => post.primary_tag.name === 'Portrait').slice(0, 3)"></all-posts>
+      <b-button href="/tag/portrait" variant="outline-primary" class="discover-more">Découvrir plus</b-button>
     </div>
   </div>
 </template>

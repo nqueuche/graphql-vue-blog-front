@@ -44,7 +44,7 @@ export default {
     dateformat: function(value) {
       moment.locale("fr");
       return moment(value).format("LL");
-    }
+    },
   }
 };
 </script>
@@ -58,6 +58,10 @@ export default {
 img.card-img {
   max-height: 15rem;
   object-fit: cover;
+}
+
+.card-text {
+  display: block;
 }
 
 .card-body {
