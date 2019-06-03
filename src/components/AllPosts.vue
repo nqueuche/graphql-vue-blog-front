@@ -6,16 +6,15 @@
           <b-card :img-src="post.feature_image" class="mb-4">
             <a :href="'/'+post.slug">
               <h4>{{post.title}}</h4>
-              <p>Publié le : {{post.published_at | dateformat}}</p>
             </a>
+            <p>Publié le : {{post.published_at | dateformat}}</p>
+
             <a :href="'/tag/' + post.primary_tag.slug">
               <div class="suggested-tag">{{ post.primary_tag.name}}</div>
             </a>
             <a :href="'/author/' + post.primary_author.slug">
               <div class="suggested-author">{{post.primary_author.name}}</div>
             </a>
-
-            <h4></h4>
             <p card-text>{{ post.custom_excerpt}}</p>
           </b-card>
         </b-col>
@@ -26,26 +25,28 @@
 
 <script>
 import { ALL_POSTS_QUERY } from "../constants/graphql";
-import moment from 'moment';
-
+import moment from "moment";
 
 export default {
   name: "AllPosts",
   props: ["allPosts"],
-
   apollo: {
     allPosts: {
-      query: ALL_POSTS_QUERY
+      query: ALL_POSTS_QUERY,
+      variables() {
+        return {
+          slug: this.slug
+        };
+      }
     }
   },
   filters: {
-  dateformat: function (value) {
-        moment.locale('fr');
-    return moment(value).format('LL');
+    dateformat: function(value) {
+      moment.locale("fr");
+      return moment(value).format("LL");
+    }
   }
-}
-  
-}
+};
 </script>
 
 <style>

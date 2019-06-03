@@ -1,7 +1,7 @@
 <template>
   <div>
     <all-posts
-      :allPosts="allPosts.filter(post => post.primary_tag.name.toLowerCase() === (tag === undefined ? slug : tag))"
+      :allPosts="allPosts"
     ></all-posts>
   </div>
 </template>
@@ -11,8 +11,7 @@ import { ALL_POSTS_QUERY } from "../constants/graphql";
 import AllPosts from "./AllPosts.vue";
 
 export default {
-  name: "TagPosts",
-  props: ["tag"],
+  name: "PostsView",
   data() {
     return {
       allPosts: [],

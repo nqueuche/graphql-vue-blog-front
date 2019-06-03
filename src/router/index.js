@@ -8,6 +8,7 @@ import SinglePost from '../components/SinglePost'
 import TagPosts from '../components/TagPosts'
 import AuthorPosts from '../components/AuthorPosts'
 import HomePage from '../components/HomePage'
+import PostsView from '../components/PostsView'
 
 Vue.use(BootstrapVue)
 Vue.use(Router)
@@ -21,8 +22,8 @@ export default new Router({
     },
     {
       path: '/all',
-      name: 'AllPosts',
-      component: AllPosts
+      name: 'PostsView',
+      component: PostsView,
     },
     {
       path: '/:slug',

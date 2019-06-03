@@ -20,18 +20,15 @@
 </template>
 
 <script>
-import AppHeader from "./AppHeader";
 import AllPosts from "./AllPosts";
-import TagPosts from "./TagPosts";
 import { ALL_POSTS_QUERY } from "../constants/graphql";
 
 
 export default {
   name: "HomePage",
   components: {
-    AllPosts,
-    TagPosts
-  },
+    AllPosts
+    },
   data() {
     return {
       allPosts: []
