@@ -8,7 +8,7 @@
           <ul>
             <li class="list-unstyled">
               <a
-                href="#!"
+                :href="post.slug"
                 class="footer-links"
                 v-for="post in allPosts.slice(0, 5)"
                 :key="post.id"
@@ -20,7 +20,7 @@
           <h5 class="title">Explorer</h5>
           <ul>
             <li class="list-unstyled">
-              <a href="#!" class="footer-links" v-for="tag in allTags" :key="tag.id">{{tag.name}}</a>
+              <a :href="'/tag/' + tag.slug" class="footer-links" v-for="tag in allTags" :key="tag.id">{{tag.name}}</a>
             </li>
           </ul>
         </b-col>

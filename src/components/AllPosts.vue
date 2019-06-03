@@ -2,16 +2,16 @@
   <div>
     <b-container class="all-posts">
       <b-row>
-        <b-col sm="4" v-for="post in allPosts.slice(0, nbrPosts)" :key="post.id">
+        <b-col sm="4" v-for="post in allPosts" :key="post.id">
           <b-card :img-src="post.feature_image" class="mb-4">
-            <a :href="post.slug">
+            <a :href="'/'+post.slug">
               <h4>{{post.title}}</h4>
               <p>Publié le : {{post.published_at | dateformat}}</p>
             </a>
             <a :href="'/tag/' + post.primary_tag.slug">
               <div class="suggested-tag">{{ post.primary_tag.name}}</div>
             </a>
-            <a :href="'/author/' + post.primary_author.name">
+            <a :href="'/author/' + post.primary_author.slug">
               <div class="suggested-author">{{post.primary_author.name}}</div>
             </a>
 
@@ -31,12 +31,7 @@ import moment from 'moment';
 
 export default {
   name: "AllPosts",
-  props: ["nbrPosts"],
-  data() {
-    return {
-      allPosts: []
-    };
-  },
+  props: ["allPosts"],
 
   apollo: {
     allPosts: {
@@ -45,6 +40,7 @@ export default {
   },
   filters: {
   dateformat: function (value) {
+        moment.locale('fr');
     return moment(value).format('LL');
   }
 }

@@ -22,6 +22,8 @@ export const ALL_POSTS_QUERY= gql`
         }
       }`
 
+      
+
 export const ALL_TAGS_QUERY= gql` 
 query AllTagsQuery {
     allTags {

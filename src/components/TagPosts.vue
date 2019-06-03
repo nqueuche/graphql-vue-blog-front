@@ -1,27 +1,7 @@
 <template>
   <div>
-    <b-container class="all-posts">
-      <b-row>
-        <b-col
-          sm="4"
-          v-for="post in allPosts.filter(post => post.primary_tag.name.toLowerCase() === (tag === undefined ? slug : tag)).slice(0, nbrPosts)"
-          :key="post.id"
-        >
-          <b-card :img-src="post.feature_image" class="mb-4">
-            <a :href="'/' + post.slug">
-              <h4>{{post.title}}</h4>
-              <p>Publié le : {{post.published_at}}</p>
-            </a>
-            <a :href="'/tag/' + post.primary_tag.slug">
-              <div class="suggested-tag">{{ post.primary_tag.name }}</div>
-            </a>
-
-            <h4></h4>
-            <p card-text>{{ post.custom_excerpt}}</p>
-          </b-card>
-        </b-col>
-      </b-row>
-    </b-container>
+    <all-posts :allPosts="allPosts.filter(post => post.primary_tag.name.toLowerCase() === (tag === undefined ? slug : tag))"></all-posts>
+  
   </div>
 </template>
 
@@ -31,12 +11,16 @@ import AllPosts from "./AllPosts.vue";
 
 export default {
   name: "TagPosts",
-  props: ["tag", "nbrPosts"],
+  props: ["tag"],
   data() {
     return {
       allPosts: [],
-      slug: this.$route.params.slug
+                slug: this.$route.params.slug
+
     };
+  },
+  components: {
+    AllPosts
   },
 
   apollo: {
@@ -44,7 +28,7 @@ export default {
       query: ALL_POSTS_QUERY,
       variables() {
         return {
-          slug: this.slug
+          slug: this.$route.params.slug
         };
       }
     }

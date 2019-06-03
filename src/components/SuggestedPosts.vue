@@ -19,12 +19,11 @@
             <a :href="'/tag/' + post.primary_tag.slug">
               <div class="suggested-tag">{{ post.primary_tag.name}}</div>
             </a>
-<a :href="post.slug">
+            <a :href="post.slug">
               <h4>{{post.title}}</h4>
-              <p>Publié le : {{post.published_at}}</p>
+              <p>Publié le : {{post.published_at | dateformat}}</p>
             </a>
           </b-col>
-
         </b-row>
       </b-container>
     </div>
@@ -66,6 +65,7 @@
 
 <script>
 import { ALL_POSTS_QUERY } from "../constants/graphql";
+import moment from 'moment';
 
 export default {
   name: "SuggestedPosts",
@@ -78,6 +78,12 @@ export default {
     allPosts: {
       query: ALL_POSTS_QUERY
     }
+  },
+  filters: {
+  dateformat: function (value) {
+    moment.locale('fr');
+    return moment(value).format('LL');
+  }
   }
 };
 </script>

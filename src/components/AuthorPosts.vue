@@ -1,28 +1,7 @@
 <template>
   <div>
-    <b-container class="all-posts">
-      <b-row>
-        <b-col
-          sm="4"
-          v-for="post in allPosts.filter(post => post.primary_author.slug.toLowerCase() === slug.toLowerCase())"
-          :key="post.id"
-        >
-          <b-card :img-src="post.feature_image" class="mb-4">
-            <a :href="'/' + post.slug">
-              <h4>{{post.title}}</h4>
-            </a>
-            <a :href="'/tag/' + post.primary_tag.slug">
-              <div class="suggested-tag">{{ post.primary_tag.name }}</div>
-            </a>
-            <a :href="'/author/' + post.primary_author.name">
-              <div class="suggested-author">{{post.primary_author.name}}</div>
-            </a>
-            <h4></h4>
-            <p card-text>{{ post.custom_excerpt}}</p>
-          </b-card>
-        </b-col>
-      </b-row>
-    </b-container>
+    <all-posts :allPosts="allPosts.filter(post => post.primary_author.slug.toLowerCase() === slug.toLowerCase())"></all-posts>
+  
   </div>
 </template>
 
@@ -35,8 +14,12 @@ export default {
   data() {
     return {
       allPosts: [],
-      slug: this.$route.params.slug
+                slug: this.$route.params.slug
+
     };
+  },
+  components: {
+    AllPosts
   },
 
   apollo: {
@@ -44,7 +27,7 @@ export default {
       query: ALL_POSTS_QUERY,
       variables() {
         return {
-          slug: this.slug
+          slug: this.$route.params.slug
         };
       }
     }
@@ -70,6 +53,4 @@ img.card-img {
 .card:hover {
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
-
 </style>
-

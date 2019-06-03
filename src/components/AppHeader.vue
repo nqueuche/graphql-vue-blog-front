@@ -19,7 +19,6 @@
               v-for="tag in allTags"
               :key="tag.id"
             >{{tag.name}}</b-dropdown-item>
-            <b-dropdown-item href="#">Another item</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
